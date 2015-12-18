@@ -8,6 +8,7 @@ group :production do
   gem 'sinatra'
   gem 'selenium-webdriver'
   gem 'bcrypt'
+  gem 'sinatra-flash'
 end
 
 group :test do

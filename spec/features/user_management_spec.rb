@@ -7,5 +7,6 @@ feature 'User sign up' do
 
   scenario 'Invalid password confirmation' do
     expect { invalid_sign_up }.not_to change(User, :count)
+    expect(page).to have_content('Passwords do not match')
   end
 end
