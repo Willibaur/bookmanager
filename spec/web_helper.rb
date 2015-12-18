@@ -13,3 +13,11 @@ def create_link_BBC_3_tags
   fill_in 'tags', with: 'bubbles news media'
   click_button 'Add'
 end
+
+def sign_up
+  visit '/users/new'
+  expect(page.status_code).to eq(200)
+  fill_in :email,    with: 'alice@example.com'
+  fill_in :password, with: 'oranges!'
+  click_button 'Sign up'
+end
