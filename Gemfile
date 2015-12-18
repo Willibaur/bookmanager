@@ -20,3 +20,5 @@ end
 group :development do
   gem 'rake'
 end
+
+#All groups implemented
