@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Please sign up</h1>
+
+    <form action='/users' method='post'>
+      <input name='email' type='text' placeholder="email" value="<%=@user.email%>" autofocus required>
+      <input name='password' type='password' placeholder="password">
+      <input name='password_confirmation' type='password' placeholder="password confirmation">
+
+      <input type='submit' value='Sign up'>
+    </form>
+  </body>
+</html>
