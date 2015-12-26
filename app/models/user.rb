@@ -9,10 +9,9 @@ class User
   attr_accessor :password_confirmation
 
   validates_confirmation_of :password
-  validates_uniqueness_of :email
 
   property :id, Serial
-  property :email, String
+  property :email, String, required: true, format: :email_address
   property :password_digest, Text
 
   def password=(password)
