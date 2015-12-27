@@ -7,10 +7,6 @@
   <body>
     <% if current_user %>
       Welcome, <%= @current_user.email %>
-    <% else %>
-      <form action='users/new'>
-        <input type="submit" value="Sign Up"
-      </form>
     <% end %>
 
     <div class="validation_error">

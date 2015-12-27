@@ -4,7 +4,7 @@
 
 feature 'Filtering tags' do
   scenario 'Allows to filter links by tag' do
-    create_link_BBC
+    create_link_bbc
     visit '/tags/bubbles'
     expect(page).to have_content('BBC')
   end
