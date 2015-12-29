@@ -10,6 +10,7 @@ group :production do
   gem 'sinatra-flash'
   gem 'bcrypt'
   gem 'timecop'
+  gem 'mailgun-ruby'
 end
 
 group :test do
