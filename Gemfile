@@ -7,9 +7,9 @@ group :production do
   gem 'dm-postgres-adapter'
   gem 'sinatra'
   gem 'sinatra-partial'
-  # gem 'selenium-webdriver'
   gem 'sinatra-flash'
   gem 'bcrypt'
+  gem 'timecop'
 end
 
 group :test do
