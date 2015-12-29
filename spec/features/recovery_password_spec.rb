@@ -35,4 +35,38 @@ feature 'Recovering Password' do
       expect(page).to have_content 'Your token is invalid'
     end
   end
+
+  scenario 'It asks user for new password when token is valid' do
+    recover_password
+    visit("/users/reset_password?token=#{user.password_token}")
+    expect(page).to have_content('Please enter your new password')
+  end
+
+  scenario 'it lets you enter a new password with a valid token' do
+    recover_password
+    visit("/users/reset_password?token=#{user.password_token}")
+    fill_in :password, with: 'newpassword'
+    fill_in :password_confirmation, with: 'newpassword'
+    click_button 'Submit'
+    expect(page).to have_content('Please Sign in')
+  end
+
+  scenario 'it lets you sign in after password reset' do
+    recover_password
+    visit("/users/reset_password?token=#{user.password_token}")
+    fill_in :password, with: 'newpassword'
+    fill_in :password_confirmation, with: 'newpassword'
+    click_button 'Submit'
+    sign_in(email: 'user_name@email.com', password: 'newpassword')
+    expect(page).to have_content 'Welcome, user_name@email.com'
+  end
+
+  scenario "it lets you know if your passwords don't match" do
+    recover_password
+    visit("/users/reset_password?token=#{user.password_token}")
+    fill_in :password, with: 'newpassword'
+    fill_in :password_confirmation, with: 'wrong_password'
+    click_button 'Submit'
+    expect(page).to have_content('Password does not match the confirmation')
+  end
 end
