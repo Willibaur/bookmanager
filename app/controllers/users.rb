@@ -1,3 +1,4 @@
+# User controller
 class BookmarkManager < Sinatra::Base
   get '/users/new' do
     @user = User.new
@@ -15,5 +16,16 @@ class BookmarkManager < Sinatra::Base
       flash.now[:errors] = @user.errors.full_messages
       erb :'/users/new'
     end
+  end
+
+  get '/users/recover' do
+    erb :'/users/recover'
+  end
+
+  post '/users/recover' do
+    user = User.first(email: params[:email])
+    user.generate_token if user
+
+    erb :'users/acknowledgement'
   end
 end
